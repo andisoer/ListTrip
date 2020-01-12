@@ -24,7 +24,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/itembackground" />
+            android:background="@color/colorGrey" />
 
         <TextView
             android:id="@+id/tvItemPlaceNameDestination"
@@ -35,7 +35,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Raja Ampat, Irian Jaya, Papua"
+            android:text="@string/destination_name"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="View 190"
+            android:text="@string/destination_view"
             android:textSize="12sp"
             android:gravity="center"
             android:drawableLeft="@drawable/ic_action_view"
@@ -79,7 +79,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:text="IDR.185000"
+            android:text="@string/destination_ticket_price"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

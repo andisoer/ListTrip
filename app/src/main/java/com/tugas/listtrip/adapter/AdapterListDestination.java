@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -22,15 +20,13 @@ import com.tugas.listtrip.model.Destination;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterListDestination extends RecyclerView.Adapter<AdapterListDestination.ViewHolder> implements Filterable {
+public class AdapterListDestination extends RecyclerView.Adapter<AdapterListDestination.ViewHolder>{
 
     private List<Destination> listDestination;
-    private List<Destination> listDestinationFiltered;
     private Context mContext;
 
     public AdapterListDestination(List<Destination> listDestination, Context mContext) {
         this.listDestination = listDestination;
-        this.listDestinationFiltered = listDestination;
         this.mContext = mContext;
     }
 
@@ -54,7 +50,8 @@ public class AdapterListDestination extends RecyclerView.Adapter<AdapterListDest
 
         holder.tvPlaceName.setText(destination.getName());
         holder.tvView.setText(destination.getView());
-        holder.tvTicket.setText("IDR "+destination.getTicket());
+        holder.tvTicket.setText(String.format("IDR %s", destination.getTicket()));
+        holder.rbItem.setRating(Float.parseFloat(destination.getRating()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,37 +67,6 @@ public class AdapterListDestination extends RecyclerView.Adapter<AdapterListDest
     @Override
     public int getItemCount() {
         return listDestination.size();
-    }
-
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-                String charString = charSequence.toString();
-                if(charString.isEmpty()){
-                    listDestinationFiltered = listDestination;
-                }else {
-                    List<Destination> filteredList = new ArrayList<>();
-                    for(Destination row : listDestination){
-                        if(row.getName().toLowerCase().contains(charString.toLowerCase())){
-                            filteredList.add(row);
-                        }
-                    }
-                    listDestinationFiltered = filteredList;
-                }
-
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = listDestinationFiltered;
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                listDestinationFiltered = (ArrayList<Destination>)filterResults.values;
-                notifyDataSetChanged();
-            }
-        };
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -119,6 +85,12 @@ public class AdapterListDestination extends RecyclerView.Adapter<AdapterListDest
             rbItem = itemView.findViewById(R.id.rbItemDestination);
 
         }
+    }
+
+    public void setFilter(List<Destination> listDestinationFiltered){
+        listDestination = new ArrayList<>();
+        listDestination.addAll(listDestinationFiltered);
+        notifyDataSetChanged();
     }
 
 }

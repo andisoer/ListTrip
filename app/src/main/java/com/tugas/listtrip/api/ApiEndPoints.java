@@ -60,4 +60,18 @@ public interface ApiEndPoints {
     @POST("update_view.php")
     Call<ResponseBody> update_view(@Field("id_destination")String id_destination);
 
+    @FormUrlEncoded
+    @POST("select_rating_user.php")
+    Call<ResponseBody> select_rating_user(@Field("id_user")String id_user,
+                                     @Field("id_destination")String id_destination);
+
+    @FormUrlEncoded
+    @POST("update_rating.php")
+    Call<ResponseBody> update_rating(@Field("id_user")String id_user,
+                                     @Field("id_destination")String id_destination,
+                                     @Field("rating")String rating);
+    @FormUrlEncoded
+    @POST("select_rating.php")
+    Call<ResponseBody> select_rating_destination(@Field("id_destination")String id_destination);
+
 }

@@ -4,10 +4,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="lorem_ipsum">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </string>
+    <string name="lorem_ipsum">"         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.     "</string>
 
+    <string name="loading">Loading . . .</string>
+    <string name="search_destination">Search Destination</string>
+    <string name="logout">Logout</string>
+    <string name="prompt_logout">Are you sure want to logout ? </string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+
+    <string name="time_out_error">Failed to reach server, please try again</string>
+    <string name="something_error">Something Error, please try again</string>
+    <string name="parse_error">Failed to read data</string>
     <string name="fill_name">Please fill your name</string>
     <string name="fill_email">Please fill your email</string>
     <string name="fill_password">Please fill your password</string>
@@ -15,5 +23,42 @@
     <string name="fill_phone">Please fill your phone number</string>
     <string name="fill_address">Please fill your address</string>
     <string name="password_not_match">Password does not match</string>
+    <string name="destination_name">destination name</string>
+    <string name="destination_description">destination description</string>
+    <string name="destination_ticket_price">destination ticket price</string>
+    <string name="login">Login</string>
+    <string name="e_mail">E - mail</string>
+    <string name="password">Password</string>
+    <string name="dont_have_an_account_register">Dont Have An Account? Register</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="register_success">Register Success</string>
+    <string name="destination">Destination</string>
+    <string name="profile">Profile</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="update">Update</string>
+    <string name="empty_data">Empty data</string>
+    <string name="destination_view">destination view</string>
+    <string name="description">Description</string>
+    <string name="overall_rating">Overall Rating</string>
+    <string name="your_rating">Your Rating</string>
+    <string name="_0">0</string>
+    <string name="add_review">Add Review</string>
+    <string name="update_review">Update Review</string>
+    <string name="_5">5</string>
+    <string name="_4">4</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+    <string name="ticket_price">Ticket Price</string>
+    <string name="add_to_wishlist">Add to wishlist</string>
+    <string name="remove_from_wishlist">Remove from wishlist</string>
+    <string name="please_rate">"Please rate this place</string>
+    <string name="change_language">Change Language</string>
+    <string name="search">Search</string>
 
 </resources>

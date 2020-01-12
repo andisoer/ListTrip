@@ -66,7 +66,8 @@ public class SearchFragment extends Fragment {
 
         Toolbar toolbar = v.findViewById(R.id.tbSearch);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.destination);
 
         rvListDestination = v.findViewById(R.id.rvListDestination);
         pbLoadListDestination = v.findViewById(R.id.pbLoadListDestination);
@@ -76,6 +77,8 @@ public class SearchFragment extends Fragment {
         rvListDestination.setAdapter(adapter);
         rvListDestination.setLayoutManager(gridManager);
 
+        setHasOptionsMenu(true);
+
         return v;
     }
 
@@ -83,7 +86,6 @@ public class SearchFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setHasOptionsMenu(true);
         listDestination = new ArrayList<>();
     }
 
@@ -109,6 +111,7 @@ public class SearchFragment extends Fragment {
 
                     if(error){
 
+                        String message = jsonObject.getString(Config.TAG_message);
                         showLoading(false);
 
                     }else{
@@ -141,18 +144,20 @@ public class SearchFragment extends Fragment {
                 }catch (JSONException e){
                     e.printStackTrace();
                     Log.e(TAG, "error "+e.getMessage());
-                    Toast.makeText(getActivity(), "Gagal mengurai data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.parse_error, Toast.LENGTH_SHORT).show();
                     showLoading(false);
                 }catch (IOException e){
                     e.printStackTrace();
                     Log.e(TAG, "error : "+e.getMessage());
+                    Toast.makeText(getActivity(), R.string.something_error, Toast.LENGTH_SHORT).show();
                     showLoading(false);
                 }
             }
 
             @Override
             public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
-
+                showLoading(false);
+                Toast.makeText(getActivity(), R.string.time_out_error, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -168,26 +173,31 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.btnsearch, menu);
-
-        SearchManager searchManager = (SearchManager) getContext().getSystemService(Context.SEARCH_SERVICE);
-        searchView = (SearchView) menu.findItem(R.id.btnSearch).getActionView();
-        searchView.setSearchableInfo(searchManager.
-                getSearchableInfo(getActivity().getComponentName()));
-        searchView.setMaxWidth(Integer.MAX_VALUE);
-
+        MenuItem searchItem = menu.findItem(R.id.item_menu_search);
+        searchItem.setIcon(R.drawable.ic_action_search);
+        SearchView searchView = new SearchView(getContext());
+        searchView.setQueryHint(getResources().getString(R.string.search_destination));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                adapter.getFilter().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
+                newText = newText.toLowerCase();
+                List<Destination> listDestinationFiltered = new ArrayList<>();
+                for (Destination data : listDestination){
+                    String name = data.getName().toLowerCase();
+                    if (name.contains(newText)){
+                        listDestinationFiltered.add(data);
+                    }
+                }
+                adapter.setFilter(listDestinationFiltered);
+                return true;
             }
         });
+        searchItem.setActionView(searchView);
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -196,7 +206,7 @@ public class SearchFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if(id == R.id.btnSearch){
+        if(id == R.id.item_menu_search){
             return true;
         }
 

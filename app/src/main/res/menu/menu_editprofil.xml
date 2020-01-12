@@ -4,14 +4,21 @@
 
     <item
         android:id="@+id/menuEditProfil"
-        android:title="Edit Profile"
+        android:title="@string/edit_profile"
         app:showAsAction="never"
         android:icon="@drawable/ic_action_edit"/>
 
     <item
+        android:id="@+id/menuChangeLanguage"
+        android:title="@string/change_language"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/menuLogout"
-        android:title="Logout"
+        android:title="@string/logout"
         app:showAsAction="never"
         android:icon="@drawable/ic_action_logout"/>
+
+
 
 </menu>

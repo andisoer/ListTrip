@@ -64,9 +64,10 @@ public class CartFragment extends Fragment {
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        Toolbar toolbar = v.findViewById(R.id.tbSearch);
+        Toolbar toolbar = v.findViewById(R.id.tbWishlist);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(R.string.wishlist);
 
         rvListWishlist = v.findViewById(R.id.rvWishlist);
         pbLoadData = v.findViewById(R.id.pbLoadListWishlist);
@@ -133,6 +134,7 @@ public class CartFragment extends Fragment {
                                 wishlist.setView(objectData.getString(Config.TAG_view));
                                 wishlist.setRating(objectData.getString(Config.TAG_rating));
                                 wishlist.setTicket(objectData.getString(Config.TAG_ticket));
+                                wishlist.setPhoto(objectData.getString(Config.TAG_photo));
 
                                 listWishlist.add(wishlist);
 
@@ -144,10 +146,12 @@ public class CartFragment extends Fragment {
                     } catch (JSONException e) {
                         showLoading(false);
                         e.printStackTrace();
+                        Toast.makeText(getActivity(), R.string.parse_error, Toast.LENGTH_SHORT).show();
                         emptyDataData.setVisibility(View.VISIBLE);
                     } catch (IOException e) {
                         showLoading(false);
                         e.printStackTrace();
+                        Toast.makeText(getActivity(), R.string.something_error, Toast.LENGTH_SHORT).show();
                         emptyDataData.setVisibility(View.VISIBLE);
                     }
 
@@ -155,10 +159,11 @@ public class CartFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
                 showLoading(false);
                 t.printStackTrace();
                 Log.e(TAG+ " getData", "onFailure : "+t.getMessage());
+                Toast.makeText(getActivity(), R.string.time_out_error, Toast.LENGTH_SHORT).show();
                 emptyDataData.setVisibility(View.VISIBLE);
             }
         });

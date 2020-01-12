@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/menuBotNavProfil"
-        android:title="Profil"
+        android:title="@string/profile"
         android:icon="@drawable/ic_action_person"/>
 
     <item
         android:id="@+id/menuBotNavSearch"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/ic_action_search"/>
 
     <item
         android:id="@+id/menuBotNavCart"
         android:icon="@drawable/ic_action_list"
-        android:title="Wishlist" />
+        android:title="@string/wishlist" />
 
 </menu>

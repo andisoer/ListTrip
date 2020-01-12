@@ -46,7 +46,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:text="ListTrip"
+                android:text="@string/app_name"
                 android:textColor="@android:color/white"
                 android:textSize="29sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -86,7 +86,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
-                        android:text="Register"
+                        android:text="@string/register"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toBottomOf="@+id/view2"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +137,7 @@
                             android:id="@+id/tieNameRegister"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Nama"
+                            android:hint="@string/name"
                             android:inputType="textPersonName" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,7 +160,7 @@
                             android:id="@+id/tieEmailRegister"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="E - mail"
+                            android:hint="@string/e_mail"
                             android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,7 +183,7 @@
                             android:id="@+id/tiePasswordRegister"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Password"
+                            android:hint="@string/password"
                             android:inputType="textPassword"
                             android:typeface="monospace" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -207,7 +207,7 @@
                             android:id="@+id/tieConfirmPassworRegister"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Konfirmasi Password"
+                            android:hint="@string/confirm_password"
                             android:inputType="textPassword"
                             android:typeface="monospace" />
 
@@ -232,7 +232,7 @@
                             android:id="@+id/tiePhoneRegister"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="No Handphone"
+                            android:hint="@string/phone_number"
                             android:inputType="phone"
                             android:maxLength="12"/>
 
@@ -256,7 +256,7 @@
                             android:id="@+id/tieAddressRegister"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Alamat"
+                            android:hint="@string/address"
                             android:inputType="textPostalAddress" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -274,7 +274,7 @@
                         android:layout_marginBottom="24dp"
                         android:background="@drawable/bg_btnprimarycorner"
                         android:padding="16dp"
-                        android:text="Register"
+                        android:text="@string/register"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

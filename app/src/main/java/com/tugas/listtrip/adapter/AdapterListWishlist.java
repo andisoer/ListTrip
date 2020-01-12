@@ -47,6 +47,7 @@ public class AdapterListWishlist extends RecyclerView.Adapter<AdapterListWishlis
         holder.tvPlaceName.setText(wishlist.getName());
         holder.tvView.setText(wishlist.getView());
         holder.tvTicket.setText("IDR "+wishlist.getTicket());
+        holder.rbItem.setRating(Float.parseFloat(wishlist.getRating()));
 
         Glide.with(mContext)
                 .load(wishlist.getPhoto())

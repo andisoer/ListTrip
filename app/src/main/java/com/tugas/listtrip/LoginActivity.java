@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         tvDontHaveAccount.setOnClickListener(this);
         progress = new ProgressDialog(this);
-        progress.setMessage("Waiting");
+        progress.setMessage(getResources().getString(R.string.loading));
         progress.setCancelable(false);
 
     }
@@ -96,9 +96,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String password_user = tiePassword.getText().toString();
 
         if (TextUtils.isEmpty(email)){
-            tieEmail.setError("Please fill your email");
+            tieEmail.setError(getResources().getString(R.string.fill_email));
         }else if(TextUtils.isEmpty(password_user)){
-            tiePassword.setError("Pleas fill your password");
+            tiePassword.setError(getResources().getString(R.string.password));
         }else{
             loginUser(email,password_user);
         }
@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         progress.show();
         mApiService.login(email, password_user).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
 
                 if (response.isSuccessful()){
                     try {
@@ -129,9 +129,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Toast.makeText(LoginActivity.this, R.string.parse_error, Toast.LENGTH_SHORT).show();
                         Log.e(TAG+" loginUser","onResponse : "+e.getMessage());
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(LoginActivity.this, R.string.something_error, Toast.LENGTH_SHORT).show();
                         Log.e(TAG+" loginUser","onResponse : "+e.getMessage());
                     }
 
@@ -141,6 +143,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
                 t.printStackTrace();
+                Toast.makeText(LoginActivity.this, R.string.time_out_error, Toast.LENGTH_SHORT).show();
                 Log.e(TAG+" loginUser","onFailure : "+t.getMessage());
             }
         });

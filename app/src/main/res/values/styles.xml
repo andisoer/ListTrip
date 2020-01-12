@@ -12,4 +12,10 @@
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 
+    <style name="ProgressBarCustomGreen" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="android:progressDrawable">@drawable/progressbar_custom_drawable</item>
+        <item name="android:minWidth">200dp</item>
+    </style>
+
 </resources>

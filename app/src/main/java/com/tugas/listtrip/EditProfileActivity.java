@@ -80,13 +80,13 @@ public class EditProfileActivity extends AppCompatActivity {
                 if(tilPassword.getText().toString().equals(password)){
                     cekForm();
                 }else{
-                    Toast.makeText(EditProfileActivity.this, "Password not same", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfileActivity.this, R.string.password_not_match, Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Waiting");
+        progressDialog.setMessage(getResources().getString(R.string.loading));
         progressDialog.setCancelable(false);
 
         setData();
@@ -102,11 +102,11 @@ public class EditProfileActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(name)){
             tilName.setError(getResources().getString(R.string.fill_name));
         }else if(TextUtils.isEmpty(email)){
-            tilEmail.setError(getResources().getString(R.string.fill_name));
+            tilEmail.setError(getResources().getString(R.string.fill_email));
         }else if(TextUtils.isEmpty(address)){
-            tilAddress.setError(getResources().getString(R.string.fill_name));
+            tilAddress.setError(getResources().getString(R.string.fill_address));
         }else if(TextUtils.isEmpty(phone)){
-            tilPhone.setError(getResources().getString(R.string.fill_name));
+            tilPhone.setError(getResources().getString(R.string.fill_phone));
         }else{
             tilName.setError(null);
             tilEmail.setError(null);
@@ -139,8 +139,12 @@ public class EditProfileActivity extends AppCompatActivity {
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        progressDialog.dismiss();
+                        Toast.makeText(EditProfileActivity.this, R.string.parse_error, Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        progressDialog.dismiss();
+                        Toast.makeText(EditProfileActivity.this, R.string.something_error, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -149,6 +153,8 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
                 t.printStackTrace();
                 Log.e(TAG+" updateProfile", "onFailure : "+t.getMessage());
+                progressDialog.dismiss();
+                Toast.makeText(EditProfileActivity.this, R.string.time_out_error, Toast.LENGTH_SHORT).show();
             }
         });
     }

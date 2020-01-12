@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         proges = new ProgressDialog(this);
-        proges.setMessage("waiting");
+        proges.setMessage(getResources().getString(R.string.loading));
         proges.setCancelable(false);
     }
 
@@ -127,23 +127,28 @@ public class RegisterActivity extends AppCompatActivity {
                         boolean error = json.getBoolean(Config.TAG_error);
                         if (error){
                             proges.dismiss();
+                            String message = json.getString(Config.TAG_message);
+                            Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
                         }else{
                             proges.dismiss();
-                            Toast.makeText(RegisterActivity.this, "register succes", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, R.string.register_success, Toast.LENGTH_SHORT).show();
                             finish();
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Toast.makeText(RegisterActivity.this, R.string.parse_error, Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
+                        Toast.makeText(RegisterActivity.this, R.string.something_error, Toast.LENGTH_SHORT).show();
                     }
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
                 Log.e(TAG+" registerUser", "onFailure "+t.getMessage());
+                Toast.makeText(RegisterActivity.this, R.string.time_out_error, Toast.LENGTH_SHORT).show();
             }
         });
     }
