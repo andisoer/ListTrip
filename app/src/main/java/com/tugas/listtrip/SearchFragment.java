@@ -1,7 +1,5 @@
 package com.tugas.listtrip;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -49,7 +47,8 @@ public class SearchFragment extends Fragment {
     RecyclerView rvListDestination;
     GridLayoutManager gridManager;
     ProgressBar pbLoadListDestination;
-    SearchView searchView;
+
+    View viewEmptyData, viewNetworkError;
 
     List<Destination> listDestination;
     AdapterListDestination adapter;
@@ -71,6 +70,8 @@ public class SearchFragment extends Fragment {
 
         rvListDestination = v.findViewById(R.id.rvListDestination);
         pbLoadListDestination = v.findViewById(R.id.pbLoadListDestination);
+        viewEmptyData = v.findViewById(R.id.layoutEmptyDataSearch);
+        viewNetworkError = v.findViewById(R.id.layoutNetworkErroWishlist);
         gridManager = new GridLayoutManager(getContext(), 2);
         adapter = new AdapterListDestination(listDestination, getContext());
 
@@ -112,6 +113,8 @@ public class SearchFragment extends Fragment {
                     if(error){
 
                         String message = jsonObject.getString(Config.TAG_message);
+                        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                        viewEmptyData.setVisibility(View.VISIBLE);
                         showLoading(false);
 
                     }else{
@@ -144,12 +147,14 @@ public class SearchFragment extends Fragment {
                 }catch (JSONException e){
                     e.printStackTrace();
                     Log.e(TAG, "error "+e.getMessage());
-                    Toast.makeText(getActivity(), R.string.parse_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.parse_error, Toast.LENGTH_SHORT).show();
+                    viewEmptyData.setVisibility(View.VISIBLE);
                     showLoading(false);
                 }catch (IOException e){
                     e.printStackTrace();
                     Log.e(TAG, "error : "+e.getMessage());
-                    Toast.makeText(getActivity(), R.string.something_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.something_error, Toast.LENGTH_SHORT).show();
+                    viewEmptyData.setVisibility(View.VISIBLE);
                     showLoading(false);
                 }
             }
@@ -157,7 +162,8 @@ public class SearchFragment extends Fragment {
             @Override
             public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
                 showLoading(false);
-                Toast.makeText(getActivity(), R.string.time_out_error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.time_out_error, Toast.LENGTH_SHORT).show();
+                viewNetworkError.setVisibility(View.VISIBLE);
             }
         });
     }

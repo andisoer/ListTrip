@@ -47,4 +47,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbSearch" />
 
+    <include
+        android:id="@+id/layoutEmptyDataSearch"
+        layout="@layout/layout_emptydata"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@+id/layoutNetworkErrorSearch"
+        layout="@layout/layout_networkerror"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -60,5 +60,6 @@
     <string name="please_rate">"Please rate this place</string>
     <string name="change_language">Change Language</string>
     <string name="search">Search</string>
+    <string name="network_error_please_try_again">Network error, please try again</string>
 
 </resources>

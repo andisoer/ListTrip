@@ -49,9 +49,324 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/viewShimmer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:visibility="visible"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerLayoutDetailDestination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerViewDetailWisataShimmer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGrey2"
+                android:visibility="visible">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView3Shimmer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <View
+                            android:id="@+id/textView6Shimmer"
+                            android:layout_width="50dp"
+                            android:layout_height="16dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/tvDescriptionDetailDestinationShimmer"
+                            android:layout_width="match_parent"
+                            android:layout_height="85dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView6Shimmer" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView4Shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView3Shimmer">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/textView12Shimmer"
+                            android:layout_width="70dp"
+                            android:layout_height="16dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/ratingBarDestinationShimmer"
+                            android:layout_width="50dp"
+                            android:layout_height="13dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintEnd_toEndOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintStart_toStartOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintTop_toBottomOf="@+id/tvAverageRatingShimmer" />
+
+                        <View
+                            android:id="@+id/tvRatingCountDetailDestinationShimmer"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/colorGrey"
+                            android:text="@string/_0"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingBarDestinationShimmer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingBarDestinationShimmer"
+                            app:layout_constraintTop_toBottomOf="@+id/ratingBarDestinationShimmer" />
+
+                        <View
+                            android:id="@+id/tvAverageRatingShimmer"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12Shimmer" />
+
+                        <View
+                            android:id="@+id/textView4Shimmer"
+                            android:layout_width="6dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintStart_toEndOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12Shimmer" />
+
+                        <View
+                            android:id="@+id/textView5Shimmer"
+                            android:layout_width="6dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toEndOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintTop_toBottomOf="@+id/textView4Shimmer" />
+
+                        <View
+                            android:id="@+id/textView7Shimmer"
+                            android:layout_width="6dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toEndOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintTop_toBottomOf="@+id/textView5Shimmer" />
+
+                        <View
+                            android:id="@+id/textView8Shimmer"
+                            android:layout_width="6dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toEndOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7Shimmer" />
+
+                        <View
+                            android:id="@+id/textView10Shimmer"
+                            android:layout_width="6dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginLeft="32dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toEndOf="@+id/tvAverageRatingShimmer"
+                            app:layout_constraintTop_toBottomOf="@+id/textView8Shimmer" />
+
+                        <View
+                            android:id="@+id/ratingBar5Shimmer"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView4Shimmer"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView4Shimmer"
+                            app:layout_constraintTop_toTopOf="@+id/textView4Shimmer" />
+
+                        <View
+                            android:id="@+id/ratingBar4Shimmer"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintBottom_toTopOf="@+id/textView7Shimmer"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView5Shimmer"
+                            app:layout_constraintTop_toTopOf="@+id/textView5Shimmer" />
+
+                        <View
+                            android:id="@+id/ratingBar3Shimmer"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView7Shimmer"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView7Shimmer"
+                            app:layout_constraintTop_toTopOf="@+id/textView7Shimmer" />
+
+                        <View
+                            android:id="@+id/ratingBar2Shimmer"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView8Shimmer"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView8Shimmer"
+                            app:layout_constraintTop_toTopOf="@+id/textView8Shimmer" />
+
+                        <View
+                            android:id="@+id/ratingBar1Shimmer"
+                            android:layout_width="0dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView10Shimmer"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView10Shimmer"
+                            app:layout_constraintTop_toTopOf="@+id/textView10Shimmer" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView5Shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView4Shimmer">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <View
+                            android:id="@+id/textView11Shimmer"
+                            android:layout_width="50dp"
+                            android:layout_height="16dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/tvTicketDetailDestinationShimmer"
+                            android:layout_width="200dp"
+                            android:layout_height="16dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/colorGrey"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11Shimmer" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:id="@+id/btnAddToWishlistShimmer"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/colorGrey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView5Shimmer" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/viewDetailWisata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:visibility="gone"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout

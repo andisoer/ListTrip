@@ -136,7 +136,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, R.string.something_error, Toast.LENGTH_SHORT).show();
                         Log.e(TAG+" loginUser","onResponse : "+e.getMessage());
                     }
-
                 }
             }
 

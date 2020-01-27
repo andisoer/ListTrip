@@ -46,7 +46,7 @@ public class CartFragment extends Fragment {
     ProgressBar pbLoadData;
     GridLayoutManager gridManager;
 
-    View emptyDataData;
+    View emptyDataData, viewNetworkError;
 
     List<Wishlist> listWishlist;
     AdapterListWishlist adapter;
@@ -72,6 +72,7 @@ public class CartFragment extends Fragment {
         rvListWishlist = v.findViewById(R.id.rvWishlist);
         pbLoadData = v.findViewById(R.id.pbLoadListWishlist);
         emptyDataData = v.findViewById(R.id.layoutEmptyDataWishlist);
+        viewNetworkError = v.findViewById(R.id.layoutNetworkErroWishlist);
 
         gridManager = new GridLayoutManager(getContext(), 2);
         adapter = new AdapterListWishlist(listWishlist, getContext());
@@ -164,7 +165,7 @@ public class CartFragment extends Fragment {
                 t.printStackTrace();
                 Log.e(TAG+ " getData", "onFailure : "+t.getMessage());
                 Toast.makeText(getActivity(), R.string.time_out_error, Toast.LENGTH_SHORT).show();
-                emptyDataData.setVisibility(View.VISIBLE);
+                viewNetworkError.setVisibility(View.VISIBLE);
             }
         });
     }

@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.tugas.listtrip.api.ApiEndPoints;
 import com.tugas.listtrip.api.ConfigApi;
@@ -50,6 +51,8 @@ public class DetailWisataActivity extends AppCompatActivity {
     private Button btnAddWishlist;
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private ProgressDialog progressDialog;
+    private View viewDetailWisata;
+    private ShimmerFrameLayout shimmerDetailWisata;
     private ApiEndPoints baseApiService;
     private boolean isWishlisted = false, isRated = false;
 
@@ -99,6 +102,8 @@ public class DetailWisataActivity extends AppCompatActivity {
         ratingBarDestination = findViewById(R.id.ratingBarDestination);
         ratingBarDestinationUser = findViewById(R.id.ratingBarDestinationUser);
         collapsingToolbarLayout = findViewById(R.id.collapsingToolbarDetailDestination);
+        viewDetailWisata = findViewById(R.id.viewDetailWisata);
+        shimmerDetailWisata = findViewById(R.id.shimmerLayoutDetailDestination);
         pbRatingBar1 = findViewById(R.id.ratingBar1);
         pbRatingBar2 = findViewById(R.id.ratingBar2);
         pbRatingBar3 = findViewById(R.id.ratingBar3);
@@ -140,6 +145,10 @@ public class DetailWisataActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage(getResources().getString(R.string.loading));
+
+        viewDetailWisata.setVisibility(View.GONE);
+        shimmerDetailWisata.setVisibility(View.VISIBLE);
+        shimmerDetailWisata.startShimmer();
     }
 
     private void addView() {
@@ -523,6 +532,10 @@ public class DetailWisataActivity extends AppCompatActivity {
                 .load(photo)
                 .centerCrop()
                 .into(ivDestination);
+
+        shimmerDetailWisata.stopShimmer();
+        shimmerDetailWisata.setVisibility(View.GONE);
+        viewDetailWisata.setVisibility(View.VISIBLE);
     }
 
     @Override
